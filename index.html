@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <iframe
+      id="myIframe"
+      width="500"
+      height="500"
+      src="https://lookizz.io/lubinski"
+    ></iframe>
+    <script>
+      // The main document, which sends a message and listens for the response.
+      var iframe = document.getElementById("myIframe");
+
+      // Send a message to the iframe.
+      iframe.contentWindow.postMessage(
+        { action: "sayHello" },
+        "https://lookizz.io/lubinski"
+      );
+
+      // Listen for a message from the iframe.
+      window.addEventListener("message", function (event) {
+        // Verify the origin of the message.
+        if (event.origin !== "https://lookizz.io/lubinski") {
+          // Ignore the message if it comes from an unexpected origin.
+          return;
+        }
+
+        // Check the message data.
+        if (event.data.action === "helloResponse") {
+          // Handle the message from the iframe.
+          alert("Received:", event.data.message);
+        }
+      });
+    </script>
+  </body>
+</html>
