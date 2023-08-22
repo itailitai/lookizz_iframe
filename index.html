@@ -21,13 +21,16 @@
       send_message = () => {
         alert("sending message");
         // Send a message to the iframe.
-        iframe.contentWindow.postMessage({ action: "sayHello" }, "*");
+        iframe.contentWindow.postMessage(
+          { action: "sayHello" },
+          "https://lookizz.io"
+        );
       };
       // Listen for a message from the iframe.
       window.addEventListener("message", function (event) {
         alert("received message");
         // Verify the origin of the message.
-        if (event.origin !== "https://lookizz.io/lubinski") {
+        if (event.origin !== "https://lookizz.io") {
           alert("oops");
           // Ignore the message if it comes from an unexpected origin.
           return;
