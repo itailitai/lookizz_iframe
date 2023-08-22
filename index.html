@@ -10,8 +10,8 @@
     <button onclick="send_message()">Send message</button>
     <iframe
       id="myIframe"
-      width="500"
-      height="500"
+      width="800"
+      height="800"
       src="https://lookizz.io/lubinski"
     ></iframe>
     <script>
@@ -21,10 +21,7 @@
       send_message = () => {
         alert("sending message");
         // Send a message to the iframe.
-        iframe.contentWindow.postMessage(
-          { action: "sayHello" },
-          "https://lookizz.io/lubinski"
-        );
+        iframe.contentWindow.postMessage({ action: "sayHello" }, "*");
       };
       // Listen for a message from the iframe.
       window.addEventListener("message", function (event) {
