@@ -28,7 +28,8 @@
       };
       // Listen for a message from the iframe.
       window.addEventListener("message", function (event) {
-        alert("received message", event.origin);
+        console.log("received message", event.origin);
+        console.log(event);
         // Verify the origin of the message.
         if (event.origin !== "https://lookizz.io") {
           alert("oops");
@@ -39,7 +40,7 @@
         // Check the message data.
         if (event.data.action === "helloResponse") {
           // Handle the message from the iframe.
-          alert("Received:", event.data.message);
+          console.log("Received:", event.data.message);
         }
       });
     </script>
